@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Example</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+    <!-- Vue會在這裡作用 -->
+    <h1>第12周作業</h1>
+    <h2>作業一</h2>
+    <h3>412730508范翔宇</h3>
+    <h2>{{ text }}</h2>
+    <hr>
+    {{ text2 }}
+    <p>Counter: {{ counter }}</p>
+    <div v-html="htmlText"></div>
+    <a v-bind:href="link" target="link">淡江大學</a>
+    <br>
+    <!-- 新增按鈕 -->
+    <button @click="incrementCounter">點擊我</button>
+    <hr>
+    <!-- 下拉式選單 -->
+    <label for="fruits">選擇水果：</label>
+    <select id="fruits" v-model="selectedFruit">
+        <option v-for="fruit in fruits" :value="fruit">{{ fruit.name }}</option>
+    </select>
+    <p>價格：{{ selectedFruit.price }}</p>
+    <p>數量：{{ selectedFruit.num }}</p>
+    <hr>
+    <h2>購物車</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>商品名稱</th>
+                <th>價格</th>
+                <th>庫存數量</th>
+                <th>購買數量</th>
+                <th>小計</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="fruit in fruits" :key="fruit.name">
+                <td>{{ fruit.name }}</td>
+                <td>{{ fruit.price }}</td>
+                <td>{{ fruit.num }}</td>
+                <td>
+                    <input type="number" v-model.number="fruit.quantity" :max="fruit.num" min="0" />
+                </td>
+                <td>{{ fruit.price * fruit.quantity }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>總金額：{{ totalPrice }}</p>
+</div>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.8/vue.min.js'>
+</script><script src="./script.js"></script>
+</body>
+</html>
